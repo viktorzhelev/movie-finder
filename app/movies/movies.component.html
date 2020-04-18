@@ -1,0 +1,58 @@
+
+<div class="jumbotron">
+        <div class='container'>
+        <h1 class="display-3">Find a movie!</h1>
+        <form #form='ngForm' (submit) = "search(form.value)">
+            <input type='text' class="form-control mr-sm-2"  name ="search"  ngModel >
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+ </div>
+<div class= 'panel panel-default' *ngIf='isSearch'>
+    <h1>Results</h1>
+    <div class="row">
+        <div class="col-lg-2" *ngFor="let movie of searchRes.results; let i = index">
+            <app-movie *ngIf = 'i<6'[movie]="movie"></app-movie>
+        </div>
+    </div>
+</div> 
+
+<h1>Popular movies</h1>
+<div class="row">
+<div class="col-lg-2" *ngFor="let movie of popularMovies">
+    <app-movie [movie]="movie" (clickButtonEmitter)="fromChild($event)" ></app-movie>
+</div>
+</div>
+
+<h1>In theater movies</h1>
+<div class="row">
+        <div class="col-lg-2" *ngFor="let movie of inTheaterMovies">
+            <app-movie [movie]="movie" (clickButtonEmitter)="fromChild($event)"></app-movie>
+        </div>
+</div>
+
+<div class="row" *ngIf="message">
+    {{message}}
+</div>
+
+<h1>Kids Movies</h1>
+<div class="row">
+        <div class="col-lg-2" *ngFor="let movie of kidsMovies">
+            <app-movie [movie]="movie" (clickButtonEmitter)="fromChild($event)"></app-movie>
+        </div>
+</div>
+
+<div class="row" *ngIf="message">
+    {{message}}
+</div>
+
+<h1>Drama Movies</h1>
+<div class="row">
+        <div class="col-lg-2" *ngFor="let movie of dramaMovies">
+            <app-movie [movie]="movie" (clickButtonEmitter)="fromChild($event)"></app-movie>
+        </div>
+</div>
+
+<div class="row" *ngIf="message">
+    {{message}}
+</div>
